@@ -1,2 +1,9 @@
 allow netmgrd self:process execmem;
 allow netmgrd self:packet_socket { create bind read write };
+
+allow netmgrd proc_net:file r_file_perms;
+allow netmgrd proc_net:dir r_dir_perms;
+
+# XXX Run toolbox.  Might not be needed.
+allow netmgrd toolbox_exec:file rx_file_perms;
+auditallow netmgrd toolbox_exec:file rx_file_perms;
